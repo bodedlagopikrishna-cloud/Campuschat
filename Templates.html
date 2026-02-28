@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="chat-container">
+<h2>Welcome {{ user }}</h2>
+<a href="/logout">Logout</a>
+
+<div id="chat-box"></div>
+
+<div class="input-box">
+<input type="text" id="message" placeholder="Type message...">
+<button onclick="sendMessage()">Send</button>
+</div>
+</div>
+
+<script>
+function loadMessages(){
+fetch("/messages")
+.then(res=>res.json())
+.then(data=>{
+let box=document.getElementById("chat-box");
+box.innerHTML="";
+data.forEach(m=>{
+box.innerHTML+=`<p><b>${m.user}:</b> ${m.message}</p>`;
+});
+box.scrollTop=box.scrollHeight;
+});
+}
+
+function sendMessage(){
+let msg=document.getElementById("message").value;
+fetch("/send",{
+method:"POST",
+headers:{"Content-Type":"application/json"},
+body:JSON.stringify({message:msg})
+});
+document.getElementById("message").value="";
+}
+
+setInterval(loadMessages,2000);
+loadMessages();
+</script>
+
+</body>
+</html>
