@@ -1,0 +1,51 @@
+body{
+font-family: Arial;
+background:#1e3c72;
+margin:0;
+color:white;
+}
+
+.box{
+width:300px;
+margin:100px auto;
+background:white;
+color:black;
+padding:20px;
+border-radius:10px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+
+button{
+padding:10px;
+background:#2a5298;
+color:white;
+border:none;
+width:100%;
+}
+
+.chat-container{
+padding:20px;
+}
+
+#chat-box{
+background:white;
+color:black;
+height:300px;
+overflow-y:scroll;
+padding:10px;
+margin-bottom:10px;
+border-radius:8px;
+}
+
+.input-box{
+display:flex;
+}
+
+.input-box input{
+flex:1;
+}
